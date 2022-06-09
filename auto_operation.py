@@ -10,9 +10,9 @@ class Auto_opert():
 
     def Open_led(self):
         conf=ConfigParser()
-        conf.read('settings/port_date.ini')
+        conf.read('E:\AutoTest_Tools\settings\port_date.ini')
         opd=conf['date']['openLED']
-        print(opd)
+        #print(opd)
         #conn_com.Communication.Send_data(opd)
 
 

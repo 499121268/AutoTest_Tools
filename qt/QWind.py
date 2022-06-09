@@ -1,9 +1,11 @@
 import sys
+import threading
 from PyQt5.QtWidgets import QMainWindow, QApplication, QPushButton, QHBoxLayout, QWidget
-from PyQt5.QtGui import QIcon
+
+import Demo
+import auto_operation
 import conn_com
 from configparser import ConfigParser
-
 
 class MainWind(QMainWindow):
     def __init__(self,parent=None):
@@ -11,10 +13,9 @@ class MainWind(QMainWindow):
         self.setWindowTitle("Test")
         self.resize(714, 443)
         self.button1=QPushButton("Test")
-        self.button1.clicked.connect(self.on_Click)
+        self.button1.clicked.connect(self.on_Click1)
         layout = QHBoxLayout()
         layout.addWidget(self.button1)
-
         mainFrame = QWidget()
         mainFrame.setLayout(layout)
         self.setCentralWidget(mainFrame)
@@ -26,22 +27,25 @@ class MainWind(QMainWindow):
 
     # def Open_led(self):
     #     conf = ConfigParser()
-    #     conf.read('settings/port_date.ini')
+    #     conf.read('E:\AutoTest_Tools\settings\port_date.ini')
     #     opd = conf['date']['openLED']
     #     print(opd)
     #     return opd
     #     # conn_com.Communication.Send_data(opd)
 
-    def on_Click(self,conf):
+    def on_Click1(self,conf):
         self.sender()
-        if __name__ == '__main__':
-            conf
-        print("sss")
-        ss=Tools().Open_led()
-        print("2")
-        print(ss)
-        #MainWind.instance()
+        # if __name__ == '__main__':
+        #     conf
+        #print("sss")
+        #线程操作
+        # t3 = threading.Thread(target=self.Open_led, args=('t3',))
+        # t3.start()
 
+        #self.Open_led()
+        auto_operation.Auto_opert.Open_led(self)
+        app = QApplication.instance()
+        #app.quit()
 
 
 if __name__=='__main__':
@@ -51,12 +55,5 @@ if __name__=='__main__':
     sys.exit(app.exec_())
 
 
-class Tools():
 
-    def Open_led(self):
-        conf = ConfigParser()
-        conf.read('settings/port_date.ini')
-        opd = conf['date']['openLED']
-        print(opd)
-        return opd
-        # conn_com.Communication.Send_data(opd)
+
