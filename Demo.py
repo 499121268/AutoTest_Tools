@@ -45,11 +45,45 @@ class Test_aa():
         print(crc)
         return crc & 0xffff
 
-    # 九九乘法表
+    # 判断字符串是否为空
+    def is_null(self, str):
+        if str == None or str == "":
+            return True
+        else:
+            return False
+
+    # 分割字符串取下标第三位和第四位
+    def get_index(self, str):
+        str_list = str.split('.')
+        return str_list[2], str_list[3]
+
+    # 16进制转10进制
+    def hex_to_dec(self, hex_str):
+        return int(hex_str, 16)
+
+    # 16进制转2进制并打印出来
+    def hex_to_bin(self, hex_str):
+        return bin(int(hex_str, 16))[2:]
+
+    # 截取字符串
+    def sub_str(self, str, start, end):
+        return str[start:end]
+
+    # 定义一个字符串
+    def str_test(self):
+        str = "hello world"
+        return str
+
+    # 将接受到的数据存成字符串
+    def str_to_list(self, str):
+        str_list = str.split('.')
+        return str_list
 
 
 
 aa = bytearray.fromhex("a55a0501030280")
 bb = bytearray.fromhex("a55a0501030200")
+aaa = "a55a0501030280"
 
-Test_aa().crc16(bb)
+aav = Test_aa().sub_str(aaa, 7, 9)
+print(aav)

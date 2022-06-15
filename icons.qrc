@@ -1,0 +1,11 @@
+<RCC>
+  <qresource prefix="right">
+    <file>images/right.png</file>
+  </qresource>
+  <qresource prefix="wrong">
+    <file>images/wrong.png</file>
+  </qresource>
+  <qresource prefix="background">
+    <file>images/background.jpg</file>
+  </qresource>
+</RCC>
